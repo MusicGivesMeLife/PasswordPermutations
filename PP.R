@@ -7,6 +7,80 @@ rawp <- readLines('./list.txt')
 spec_chars <- c('@', '!', '$', '-', '.', ':', '_', '%', '?')
 pplist <- c(rawp)
 
+num_to_stri <- function(numl) {
+  numlist <- c()
+  numchar <- unlist(strsplit(numl, NULL))
+  for(numi in 1:length(numchar)) {
+    if(numchar[numi] == "0") {
+      numchar[numi] = "zero"
+    }
+    else if(numchar[numi] == "1") {
+      numchar[numi] = "one"
+    }
+    else if(numchar[numi] == "2") {
+      numchar[numi] = "two"
+    }
+    else if(numchar[numi] == "3") {
+      numchar[numi] = "three"
+    }
+    else if(numchar[numi] == "4") {
+      numchar[numi] = "four"
+    }
+    else if(numchar[numi] == "5") {
+      numchar[numi] = "five"
+    }
+    else if(numchar[numi] == "6") {
+      numchar[numi] = "six"
+    }
+    else if(numchar[numi] == "7") {
+      numchar[numi] = "seven"
+    }
+    else if(numchar[numi] == "8") {
+      numchar[numi] = "eight"
+    }
+    else if(numchar[numi] == "9") {
+      numchar[numi] = "nine"
+    }
+  }
+  numlist <- c(numlist, paste(numchar, sep="", collapse=""))
+  numlist <- c(numlist, toupper(paste(numchar, sep="", collapse="")))
+  numchar <- unlist(strsplit(numl, NULL))
+  for(numi in 1:length(numchar)) {
+    if(numchar[numi] == "0") {
+      numchar[numi] = "Zero"
+    }
+    else if(numchar[numi] == "1") {
+      numchar[numi] = "One"
+    }
+    else if(numchar[numi] == "2") {
+      numchar[numi] = "Two"
+    }
+    else if(numchar[numi] == "3") {
+      numchar[numi] = "Three"
+    }
+    else if(numchar[numi] == "4") {
+      numchar[numi] = "Four"
+    }
+    else if(numchar[numi] == "5") {
+      numchar[numi] = "Five"
+    }
+    else if(numchar[numi] == "6") {
+      numchar[numi] = "Six"
+    }
+    else if(numchar[numi] == "7") {
+      numchar[numi] = "Seven"
+    }
+    else if(numchar[numi] == "8") {
+      numchar[numi] = "Eight"
+    }
+    else if(numchar[numi] == "9") {
+      numchar[numi] = "Nine"
+    }
+  }
+  numlist <- c(numlist, paste(numchar, sep="", collapse=""))
+  return(numlist)
+}
+
 for (i in 1:length(rawp)){
   l <- rawp[i]
   l <- gsub(' ', '', l)
@@ -23,7 +97,9 @@ for (i in 1:length(rawp)){
     pplist <- c(pplist, tolower(l))
     pplist <- c(pplist, capitalize(l))
   }
+  pplist <- c(pplist, num_to_stri(l))
   pplist <- c(pplist, stri_reverse(l))
+  pplist <- c(pplist, num_to_stri(stri_reverse(l)))
 }
 pplist <- unique(pplist)
 for (i in 1:length(pplist)){
