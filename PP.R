@@ -2,10 +2,14 @@
 library('data.table')
 library('stringi')
 library('Hmisc')
+library('english')
+library('stringr')
 
 rawp <- readLines('./list.txt')
 spec_chars <- c('@', '!', '$', '-', '.', ':', '_', '%', '?')
 pplist <- c(rawp)
+
+numbers_only <- function(x) !grepl("\\D", x)
 
 num_to_stri <- function(numl) {
   numlist <- c()
@@ -78,6 +82,17 @@ num_to_stri <- function(numl) {
     }
   }
   numlist <- c(numlist, paste(numchar, sep="", collapse=""))
+  if (numbers_only(numl)) {
+    numl <- as.integer(numl)
+    to_cap_str <- strsplit(str_replace(toString(as.english(numl)), "[-]", ' '), ' ', fixed=TRUE)
+    tcrfinal <- c()
+    for(tcr in to_cap_str) {
+      tcrfinal <- c(tcrfinal, capitalize(tcr))
+    }
+    numlist <- c(numlist, toString(paste(tcrfinal, sep="", collapse="")))
+    numlist <- c(numlist, toupper(toString(paste(tcrfinal, sep="", collapse=""))))
+    numlist <- c(numlist, tolower(toString(paste(tcrfinal, sep="", collapse=""))))
+  }
   return(numlist)
 }
 
