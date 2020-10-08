@@ -132,4 +132,4 @@ for (i in 1:length(pplist)){
   }
 }
 pplist <- unique(c(pplist, pplist2))
-write.table(data.table(pplist), './PPMaster.txt', col.names = FALSE, row.names = FALSE, quote = FALSE)
+write.table(data.table(pplist), './PPMaster_R.txt', col.names = FALSE, row.names = FALSE, quote = FALSE)
