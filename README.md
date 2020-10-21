@@ -6,7 +6,7 @@
 
 ## Requirements (P)
 * Python 3 installation, tested on 3.8
-* Python packages: re
+* Python packages: re, inflect
 
 ## Processes
 * Adds separator characters ('@', '!', '$', '-', '.', ':', '_', '%', '?')

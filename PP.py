@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 #TODO libraries
 import re
+import inflect
 
 ilist = open("list.txt", "r")
 pplist = ilist.readlines()
 spec_chars = ['@', '!', '$', '-', '.', ':', '_', '%', '?']
+p = inflect.engine()
 
 def num_to_stri(numl):
     numlist = []
