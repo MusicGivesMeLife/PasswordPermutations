@@ -5,7 +5,7 @@
 * R packages: data.table, stringi, Hmisc
 
 ## Requirements (P)
-* Python 3 installation, tested on 3.8
+* Python 3 installation, tested on 3.9
 * Python packages: re, inflect
 
 ## Processes
@@ -17,5 +17,5 @@
 * list.txt - list of terms to process, one item per line
 
 ## Output
-* PPMaster_R.txt - output when R version run
-* PPMaster_P.txt - output when Python version run
+* PPFinal_R.txt - output when R version run
+* PPFinal_P.txt - output when Python version run
