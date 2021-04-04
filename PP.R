@@ -94,7 +94,19 @@ num_to_stri <- function(numl) {
     numlist <- c(numlist, tolower(toString(paste(tcrfinal, sep="", collapse=""))))
     numl <- toString(numl)
     if(((str_length(numl) %% 2) == 0) && (str_length(numl) <= 8)) {
-      numl <- c(substr(numl, 1, str_length(numl)/2), substr(numl, (str_length(numl)/2)+1, str_length(numl)))
+      numl2 <- c(substr(numl, 1, str_length(numl)/2), substr(numl, (str_length(numl)/2)+1, str_length(numl)))
+      numl2 <- as.integer(numl)
+      to_cap_str <- strsplit(str_replace_all(str_replace_all(toString(as.english(numl2)), "[-]", ' '), "[,]", ''), ' ', fixed=TRUE)
+      tcrfinal <- c()
+      for(tcr in to_cap_str) {
+        tcrfinal <- c(tcrfinal, capitalize(tcr))
+      }
+      numlist <- c(numlist, str_split(paste(tcrfinal, sep="", collapse=""),','))
+      numlist <- c(numlist, toupper(str_split(paste(tcrfinal, sep="", collapse=""),',')))
+      numlist <- c(numlist, tolower(str_split(paste(tcrfinal, sep="", collapse=""),',')))
+    }
+    if(str_length(numl) == 3) {
+      numl <- c(substr(numl, 1, 1), substr(numl, 2, str_length(numl)))
       numl <- as.integer(numl)
       to_cap_str <- strsplit(str_replace_all(str_replace_all(toString(as.english(numl)), "[-]", ' '), "[,]", ''), ' ', fixed=TRUE)
       tcrfinal <- c()
